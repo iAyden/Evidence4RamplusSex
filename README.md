@@ -2,6 +2,8 @@
 
 Build a schedule by choosing a start time, a focus duration, a break duration, and a number of sessions. The planner shows each block, the total duration, and the finish time. If a schedule crosses midnight, the timeline shows the day offset.
 
+[Open Study Session Planner](https://iayden.github.io/Evidence4RamplusSex/)
+
 ## Install and run
 
 Install Git and Node.js 24, which includes npm. From the repository's GitHub page, copy the HTTPS clone URL under **Code**, then run the following commands with that URL.

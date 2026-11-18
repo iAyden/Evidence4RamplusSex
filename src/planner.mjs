@@ -4,7 +4,12 @@ function assertWholeNumber(value, minimum, maximum, label) {
   }
 }
 
-export function planSessions({ startTime, focusMinutes, breakMinutes, sessionCount } = {}) {
+export function planSessions(settings) {
+  if (settings === null || typeof settings !== 'object' || Array.isArray(settings)) {
+    throw new TypeError('Planner settings must be an object.');
+  }
+
+  const { startTime, focusMinutes, breakMinutes, sessionCount } = settings;
   if (typeof startTime !== 'string' || !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(startTime)) {
     throw new RangeError('Start time must be in HH:MM format.');
   }

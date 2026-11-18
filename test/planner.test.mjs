@@ -122,3 +122,12 @@ test('rejects session counts outside the allowed integer range', () => {
     );
   }
 });
+
+test('reports a consistent error when planner settings are missing or not an object', () => {
+  for (const settings of [undefined, null, false, '09:30', []]) {
+    assert.throws(() => planSessions(settings), {
+      name: 'TypeError',
+      message: 'Planner settings must be an object.',
+    });
+  }
+});
