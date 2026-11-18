@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#233e33">
+    <meta name="description" content="Build a study schedule from timed focus sessions and breaks.">
+    <title>Study Session Planner</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.mjs"></script>
+  </head>
+  <body>
+    <header class="intro">
+      <div class="page-width">
+        <h1>Study Session Planner</h1>
+        <p>Build a timetable for your focus sessions and breaks.</p>
+      </div>
+    </header>
+
+    <main class="page-width workspace">
+      <section class="panel settings" aria-labelledby="settings-heading">
+        <h2 id="settings-heading">Plan settings</h2>
+        <form id="plan-form">
+          <label class="field">
+            Start time
+            <input type="time" name="startTime" value="09:00" required>
+          </label>
+          <div class="duration-fields">
+            <label class="field">
+              Focus (min)
+              <input type="number" name="focusMinutes" value="25" min="1" max="180" step="1" required>
+            </label>
+            <label class="field">
+              Break (min)
+              <input type="number" name="breakMinutes" value="5" min="0" max="60" step="1" required>
+            </label>
+          </div>
+          <label class="field">
+            Sessions
+            <input type="number" name="sessionCount" value="4" min="1" max="12" step="1" required>
+          </label>
+
+          <button type="submit">Build schedule</button>
+          <p id="plan-error" class="error" role="alert" hidden></p>
+        </form>
+        <noscript><p>Enable JavaScript to build a schedule.</p></noscript>
+      </section>
+
+      <section class="panel schedule" aria-labelledby="schedule-heading">
+        <h2 id="schedule-heading">Your schedule</h2>
+        <p id="plan-status" class="visually-hidden" role="status"></p>
+        <div id="plan-results" hidden>
+          <dl class="summary">
+            <div>
+              <dt>Finish time</dt>
+              <dd id="finish-time"></dd>
+            </div>
+            <div>
+              <dt>Total time</dt>
+              <dd id="total-time"></dd>
+            </div>
+            <div>
+              <dt>Focus time</dt>
+              <dd id="focus-time"></dd>
+            </div>
+          </dl>
+          <ol id="schedule-rows" class="timeline" role="list"></ol>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
